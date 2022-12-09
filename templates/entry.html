@@ -1,0 +1,29 @@
+<html>
+    <body>
+        {% extends 'base.html' %}
+
+        {% block body %}
+        
+        <h2>{{ the_title }}</h2>
+        
+        <form method="POST" action="/search4">
+            <table>
+                <p><b>Используй эту таблицу что-бы заполнить данные:</b></p>
+                <tbody><tr><td>Фраза:</td><td><input name="phrase" type="TEXT" width="60"></td></tr>
+                <tr><td>Символы:</td><td><input name="letters" type="TEXT"></td></tr>
+            </tbody></table>
+            <p><b>Когда заполнишь нажми на кнопку:<input value="вывести буквы" type="SUBMIT"></b></p>
+        </form>
+
+        <form action="/">
+            <p align = "right"><input value="Вернутся на главну" type="SUBMIT"></p>
+        </form>
+
+        <form action="/viewlog">
+            <p align = "right"><input value="Отчёты" type="SUBMIT"></p>
+        </form>
+
+        {% endblock %}
+
+    </body>
+</html>

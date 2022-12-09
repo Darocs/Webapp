@@ -1,0 +1,29 @@
+<html>
+    <body>
+        {% extends 'base.html' %}
+
+        {% block body %}
+        
+        <h2>{{ the_title }}</h2>
+
+        <p><b>Ты ввёл следующее данные:</b></p>
+        <table>
+            <tbody><tr><td><b>Минимальное число:</td><td>{{ the_min }}</b></td></tr>
+            <tr><td><b>Максимальное число:</td><td>{{ the_max }}</b></td></tr>
+        </tbody></table>
+
+        <p><b>Когда ты ввёл минимальное число "{{ the_min }}", и максимальное "{{ the_max }}", ты получил следующее число:</b></p>
+        <h1><center><font color="#ff4242">{{ the_number }}</font></center></h1>
+
+        <form action="/rentry">
+            <p align = "right"><input value="Заполнить заново" type="SUBMIT"></p>
+        </form>
+
+        <form action="/viewRlog">
+            <p align = "right"><input value="Отчёты" type="SUBMIT"></p>
+        </form>
+        
+        {% endblock %}
+
+    </body>
+</html>

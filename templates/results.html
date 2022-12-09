@@ -1,0 +1,29 @@
+<html>
+    <body>
+        {% extends 'base.html' %}
+
+        {% block body %}
+        
+        <h2>{{ the_title }}</h2>
+        
+        <p><b>Ты ввёл следующие данные:</b></p>
+        <table>
+            <tbody><tr><td>Фраза:</td><td>{{ the_phrase }}</td></tr>
+            <tr><td>Символы:</td><td>{{ the_letters }}</td></tr>
+        </tbody></table>
+        
+        <p><b>Когда "{{ the_phrase }}" была просмотрена, на наличие следующих символов "{{ the_letters }}", ты получил следующее:</b></p>
+        <h2><center><font color="#ff4242">{{ the_results }}</font></center></h2>
+        
+        <form action="/entry">
+            <p align = "right"><input value="Заполнить заново" type="SUBMIT"></p>
+        </form>
+
+        <form action="/viewlog">
+            <p align = "right"><input value="Отчёты" type="SUBMIT"></p>
+        </form>
+
+        {% endblock %}
+        
+    </body>
+</html>

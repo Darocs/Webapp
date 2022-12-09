@@ -1,0 +1,30 @@
+<html>
+    <body>
+        {% extends 'base.html' %}
+
+        {% block body %}
+
+        <h1>{{the_title}}</h1>
+
+        <form method="POST" action="/numRes">
+            <table>
+                <p><b>Введите минимальное и максимальное число:</b></p>
+                    <tbody><tr><td>Минимальное число:</td><td><input name="Min" type="text" width="60"></td></tr>
+                    <tr><td>Максимальное число:</td><td><input name="Max" type="text" width="60"></td></tr>
+                </tbody></table>
+                <p><b>Сгенерировать число:<input value="*Пуп*" type="SUBMIT"></b></p>
+
+        </form>
+
+        <form action="/">
+            <p align = "right"><input value="На главную" type="SUBMIT"></p>
+        </form>
+        
+        <form action="/viewRlog">
+            <p align = "right"><input value="Отчёты" type="SUBMIT"></p>
+        </form>
+
+        {% endblock %}
+
+    </body>
+</html>
