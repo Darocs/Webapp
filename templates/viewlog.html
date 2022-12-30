@@ -5,9 +5,15 @@
         {% block body %}
 
         <h2>{{ the_title }}</h2>
+     
         <form action="/entry">
             <p align = "right"><input value="Заполнить заново" type="SUBMIT"></p>
         </form>
+
+        <form action="/logout">
+            <p align = "right"><input value="Закрыть доступ к отчётам" type="SUBMIT"></p>
+        </form>
+
         <table>
             <tr>
                 {% for row_title in the_row_titles %}

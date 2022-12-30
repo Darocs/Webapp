@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, escape
+from flask import Flask, render_template, request, session
 from VSearch import search4letters
 from random_sample import rnum
 from DBcm import UseDatabase
+from checker import check_logged_in
 
 app = Flask(__name__)
 
+app.secret_key = 'DEHIC2005'
 
 '''Главная страничка'''
 
@@ -13,6 +15,24 @@ def main_page():
     title = 'Приветвую на главной странице'
     return render_template('MainPage.html',
                             the_title = title)
+
+
+'''Вход и выход'''
+
+@app.route('/login')
+def log_in():
+    session['logged_in'] = True
+    title = 'Поздраляю, Вы вошли :)'
+    return render_template('login.html',
+                        the_title = title)
+
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in')
+    title = 'До свидания :('
+    return render_template('logout.html',
+                        the_title = title)
 
 
 '''Данные базы данных'''
@@ -68,6 +88,7 @@ def wrnum():
 
 '''Логи рандомайзера'''
 @app.route('/viewRlog')
+@check_logged_in
 def viewRlog_page():
     with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = '''select Min, Max, ip, results 
@@ -125,6 +146,7 @@ def search():
 
 '''Логи Vsearch'''
 @app.route('/viewlog')
+@check_logged_in
 def viewlog_page():
     with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = '''select phrase, letters, ip, results 
