@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, escape
 from VSearch import search4letters
-from Random import rnum
+#from Random import rnum
 import mysql.connector
 
 app = Flask(__name__)
