@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, session, copy_current_request_context #Фласк, просто Фласк(Запуск, рендер станички, отправка введённых данных, сессия для авторизации, ещё штучка для параллельной записи)
 
-from VSearch import search4letters #Мой кортеж для вывода символов с вписаной строки
+from VSearch import search4letters #Мой модуль для вывода символов с вписаной строки
 
-from random_sample import rnum #Мой кортеж для рандомного числа, используется на странице с рандомайзером 
+from random_sample import rnum #Мой модуль для рандомного числа, используется на странице с рандомайзером 
 
-from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError #Мой кортеж для обработки базы данных 
+from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError #Мой модуль для обработки базы данных 
 
-from checker import check_logged_in #Мой кортеж для посхалки (в обычных случаях подобные кортежи используется для регистрации)
+from checker import check_logged_in #Мой модуль для посхалки (в обычных случаях подобные модульи используется для регистрации)
 
 from threading import Thread #Эта фигня для параллельной записи данных в базу даных
 
@@ -15,7 +15,7 @@ from time import sleep
 #Переменная для запуска фласка
 app = Flask(__name__)
 
-#Пароль для моего шаблона 'checker' (в принципе не важно какой он, потому что сайт не в облаке, главное чтобы был) 
+#Пароль для моего модуля 'checker' (в принципе не важно какой он, потому что сайт не в облаке, главное чтобы был) 
 app.secret_key = 'DEHIC2005'
 
 #Главная страничка
@@ -95,7 +95,7 @@ def wrnum():
 
 #Это предотвращение некотрых ошибок с базой данных   
     try:    
-        t = Thread(target=log_request, args=(request, results)) #Параллельная запись
+        t = Thread(target=rlog_request, args=(request, results)) #Параллельная запись
         t.start()
 
     except Exception as err:
